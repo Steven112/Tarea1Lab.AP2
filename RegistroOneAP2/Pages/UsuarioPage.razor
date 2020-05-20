@@ -50,7 +50,8 @@
     <div class="form-group">
 
         <button type="submit" class="btn btn-primary"> Guardar</button>
-        <button type="button" class="btn btn-danger" @onclick="Limpiar">Limpiar</button>
+        <button type="button" class="btn btn-danger" @onclick="Eliminar">Eliminar</button>
+        <button type="button" class="btn btn-secondary" @onclick="Limpiar">Limpiar</button>
     </div>
 
     <h5>@Mensaje</h5>
@@ -110,6 +111,28 @@
             this.usuario = new Usuario();
             Mensaje = "Error";
         }
+    }
+    public void Eliminar()
+    {
+        UsuarioControllers usuarioControllers = new UsuarioControllers();
+
+
+        var user = usuarioControllers.Buscar(usuario.UsuarioId);
+        if (user != null)
+        {
+            if (usuarioControllers.Eliminar(usuario.UsuarioId))
+            {
+                this.usuario = new Usuario();
+                Mensaje = "encotrado";
+            }
+            else
+            {
+                this.usuario = new Usuario();
+                Mensaje = "encotrado";
+            }
+        }
+
+
     }
 
 }

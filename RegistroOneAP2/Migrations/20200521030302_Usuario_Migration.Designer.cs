@@ -9,8 +9,8 @@ using RegistroOneAP2.Data;
 namespace RegistroOneAP2.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200520000248_Usuario_Inicial")]
-    partial class Usuario_Inicial
+    [Migration("20200521030302_Usuario_Migration")]
+    partial class Usuario_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,8 +39,8 @@ namespace RegistroOneAP2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Telefono")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Telefono")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UsuarioId");
 

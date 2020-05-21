@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistroOneAP2.Migrations
 {
-    public partial class Usuario_Inicial : Migration
+    public partial class Usuario_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace RegistroOneAP2.Migrations
                     UsuarioId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(nullable: false),
-                    Telefono = table.Column<int>(nullable: false),
+                    Telefono = table.Column<string>(nullable: true),
                     Cedula = table.Column<string>(nullable: false),
                     Direccion = table.Column<string>(nullable: false),
                     Nacimiento = table.Column<DateTime>(nullable: false)

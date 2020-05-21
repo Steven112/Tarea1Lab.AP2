@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label for="Telefono">Telefono</label>
-        <InputNumber @bind-Value="usuario.Telefono" class="form-group"></InputNumber>
+        <InputText @bind-Value="usuario.Telefono" class="form-group"></InputText>
         <ValidationMessage For="@(()=>usuario.Telefono)" />
     </div>
 
@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="Direccion">Direccion</label>
         <InputText @bind-Value="usuario.Direccion" class="form-group"></InputText>
-        <ValidationMessage For="@(()=>usuario.Telefono)" />
+        <ValidationMessage For="@(()=>usuario.Direccion)" />
     </div>
     <div class="form-group">
         <label for="Fecha">Fecha Nacimiento</label>
@@ -50,7 +50,8 @@
     <div class="form-group">
 
         <button type="submit" class="btn btn-primary"> Guardar</button>
-        <button type="button" class="btn btn-danger" @onclick="Limpiar">Limpiar</button>
+        <button type="button" class="btn btn-danger" @onclick="Eliminar">Eliminar</button>
+        <button type="button" class="btn btn-dark" @onclick="Limpiar">Limpiar</button>
     </div>
 
     <h5>@Mensaje</h5>
@@ -84,7 +85,7 @@
         else
         {
             this.usuario = new Usuario();
-            Mensaje = "Error";
+            Mensaje = "Error al Guardar";
 
         }
 
@@ -93,6 +94,7 @@
     {
         this.usuario = new Usuario();
     }
+
     public void Buscar()
     {
         UsuarioControllers usuarioControllers = new UsuarioControllers();
@@ -108,8 +110,31 @@
         else
         {
             this.usuario = new Usuario();
-            Mensaje = "Error";
+            Mensaje = "Usuario No Encontrado";
         }
+
     }
+    public void Eliminar()
+    {
+        UsuarioControllers usuarioControllers = new UsuarioControllers();
+
+
+        var user = usuarioControllers.Buscar(usuario.UsuarioId);
+        if (user != null)
+        {
+            if (usuarioControllers.Eliminar(usuario.UsuarioId))
+            {
+                this.usuario = new Usuario();
+                Mensaje = "Encontrado y Eliminado";
+            }
+            else
+            {
+                this.usuario = new Usuario();
+                Mensaje = "No Eliminado";
+            }
+        }
+
+    }
+
 
 }

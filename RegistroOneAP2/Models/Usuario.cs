@@ -12,8 +12,8 @@ namespace RegistroOneAP2.Models
         public int UsuarioId { get; set; }
         [Required(ErrorMessage ="Debe de haber un Nombre")]
         public string Nombre { get; set; }
-        [Required(ErrorMessage ="Debe de haber un Telefono")]
-        public int Telefono { get; set; }
+        [Required(ErrorMessage = "Debe de haber un numero de telefono")]
+        public string Telefono { get; set; }
         [Required(ErrorMessage ="Debe de haber una Cedula")]
         public string Cedula { get; set; }
         [Required(ErrorMessage = "Debe de haber una Direccion")]
@@ -26,7 +26,7 @@ namespace RegistroOneAP2.Models
         {
             UsuarioId = 0;
             Nombre = string.Empty;
-            Telefono = 0;
+            Telefono = string.Empty;
             Cedula = string.Empty;
             Direccion = string.Empty;
             Nacimiento = DateTime.Now;
